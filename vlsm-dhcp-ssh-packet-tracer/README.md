@@ -16,7 +16,8 @@ The goal: use VLSM to assign each department the smallest subnet that fits, auto
 
 ## Topology
 
-![Topology](screenshots/topology.png)
+![Topology](<img width="1919" height="1079" alt="Screenshot 2026-09-24 183615" src="https://github.com/user-attachments/assets/8975b0bc-cc2e-4ab2-a563-6810d66487ca" />
+)
 
 - **1 router (2911)**: one interface per department, each acting as that subnet's gateway
 - **3 switches (2960)**, one per department — no links between switches, so each department stays in its own broadcast domain and subnet
@@ -24,7 +25,8 @@ The goal: use VLSM to assign each department the smallest subnet that fits, auto
 
 ## VLSM Addressing Plan
 
-![VLSM Table](screenshots/vlsm-table.png)
+![VLSM Table](<img width="1095" height="149" alt="Screenshot 2026-09-24 193735" src="https://github.com/user-attachments/assets/1eab5c78-37df-444a-990f-15ad146c5f2c" />
+)
 
 | Department | Hosts | Subnet | Mask | Gateway | Usable range | Broadcast |
 |---|---|---|---|---|---|---|
@@ -34,7 +36,8 @@ The goal: use VLSM to assign each department the smallest subnet that fits, auto
 
 **Address space:** 112 addresses used (172.16.50.0 – .111), 144 unused (172.16.50.112 – .255), reserved for future growth.
 
-Full hand-written calculations: [`docs/vlsm-handwritten.jpg`](docs/vlsm-handwritten.jpg)
+Full hand-written calculations: [`docs/vlsm-handwritten.jpg`](<img width="896" height="1173" alt="VLSM" src="https://github.com/user-attachments/assets/fc254c5a-574e-4b00-ac2c-6ac3f49cba4a" />
+)
 
 ## Device Addressing
 
@@ -53,7 +56,8 @@ Full table: [`VLSM_Addressing_Table.xlsx`](VLSM_Addressing_Table.xlsx)
 
 The router runs one pool per department, with the gateway and switch management addresses excluded from each pool.
 
-![DHCP Bindings](screenshots/dhcp-binding.png)
+![DHCP Bindings](<img width="548" height="119" alt="image" src="https://github.com/user-attachments/assets/5a9cbe67-e606-4497-b96a-466d2e606814" />
+)
 
 All 9 PCs receive an address automatically within their department's range.
 
@@ -63,13 +67,15 @@ All 9 PCs receive an address automatically within their department's range.
 - Telnet is disabled everywhere (`transport input ssh` on every VTY line).
 - A single lab account is shared across devices for simplicity; in production, I'd use AAA with per-admin accounts (TACACS+/RADIUS).
 
-![SSH Login](screenshots/ssh-login.png)
+![SSH Login](<img width="571" height="260" alt="Screenshot 2026-09-24 201236" src="https://github.com/user-attachments/assets/a4f840fc-15fa-4939-8869-5dddfe2d737d" />
+)
 
 Verified: SSH login from a PC in one department into a switch in a different department, proving both SSH and inter-subnet routing.
 
 ## Connectivity
 
-![Ping Test](screenshots/ping-test.png)
+![Ping Test](<img width="526" height="247" alt="Screenshot 2026-09-24 193941" src="https://github.com/user-attachments/assets/abcaec56-d5af-4b6c-8bbd-0df0bf77fc73" />
+)
 
 PCs can reach their own gateway and PCs in other departments, confirming the router is routing correctly between subnets.
 
